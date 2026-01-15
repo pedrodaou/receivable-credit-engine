@@ -53,6 +53,7 @@ The core concepts of the domain are:
   - BOLETO
   - PIX
   - SUBSCRIPTION
+  - CONTRACT
 
 - **ReceivablePortfolio**  
   A collection of receivables associated with a single company.
