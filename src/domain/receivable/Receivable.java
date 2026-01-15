@@ -9,8 +9,9 @@ public class Receivable {
     private final Money amount;
     private final LocalDate dueDate;
     private final Company owner;
+    private final ReceivableType receivableType;
 
-    public Receivable(Money amount, LocalDate dueDate, Company owner){
+    public Receivable(Money amount, LocalDate dueDate, Company owner, ReceivableType receivableType){
         if (amount == null || amount.isZeroOrNegative()){
             throw new DomainException("Amount must not be null, zero or negative");
         }
@@ -21,9 +22,14 @@ public class Receivable {
             throw new DomainException("Owner must not be null.");
         }
 
+        if (receivableType == null){
+            throw new DomainException("ReceivableType must not be null.");
+        }
+
         this.amount = amount;
         this.dueDate = dueDate;
         this.owner = owner;
+        this.receivableType = receivableType;
     }
 
     public boolean isFuture(LocalDate today){
@@ -44,6 +50,10 @@ public class Receivable {
 
     public Company getOwner(){
         return owner;
+    }
+
+    public ReceivableType getReceivableType(){
+        return receivableType;
     }
 
 }
