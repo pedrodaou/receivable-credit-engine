@@ -55,7 +55,7 @@ The core concepts of the domain are:
   - SUBSCRIPTION
   - CONTRACT
 
-- **ReceivablePortfolio**  
+- **ReceivablePortfolio - Aggregate Root**  
   A collection of receivables associated with a single company.
 
 - **CreditApprovalService**  
