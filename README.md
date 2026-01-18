@@ -62,6 +62,25 @@ The core concepts of the domain are:
   A domain service responsible for deciding whether a credit request should be
   approved based on business rules.
 
+- **CreditRequest**
+  Represents a company's credit request, containing:
+  - the requested loan amount
+  - the associated receivable portfolio
+  - the current credit status
+
+  A credit request starts in the PENDING state and transitions to either APPROVED or REJECTED after evaluation.
+
+- **CreditStatus**
+  Represents the lifecycle of a credit request:
+  - APPROVED
+  - REJECTED
+  - PENDING
+
+- **CreditApprovalService**
+
+  A domain service responsible for evaluating a credit request and updating its status based on business rules.
+  This service contains no infrastructure logic, only domain validation and decision-making.  
+
 ---
 
 ## Business Rules
