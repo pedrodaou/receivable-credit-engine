@@ -39,7 +39,6 @@ public class Receivable {
         return dueDate.isAfter(today); // checking if the date given isFuture
     }
 
-
     public Money getAmount(){
         return amount;
     }

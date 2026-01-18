@@ -26,7 +26,7 @@ public class ReceivablePortfolio {
 
         this.id = id;
         this.company = company;
-        this.receivables = receivables;
+        this.receivables = new ArrayList<>(receivables); //changing so it doesn't get corrupted from external agents
     }
 
     public void addReceivable(Receivable receivable){
@@ -36,7 +36,7 @@ public class ReceivablePortfolio {
         receivables.add(receivable);
     }
 
-    public BigDecimal totalPortfolio(){
+    public BigDecimal getTotalPortfolioValue(){
         if(receivables.isEmpty()) {
             throw new DomainException("Receivables must not be empty.");
         }
@@ -56,6 +56,6 @@ public class ReceivablePortfolio {
     }
 
     public List<Receivable> getReceivables(){
-        return receivables;
+        return List.copyOf(receivables); //
     }
 }
