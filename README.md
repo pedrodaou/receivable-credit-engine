@@ -1,42 +1,22 @@
 # Receivable Credit Engine
 
-Domain-driven credit approval engine based on future receivables as collateral.
-
-This project models the core business logic behind approving credit for
-companies using future receivables as guarantees, with a strong focus on
-clarity, correctness and Domain-Driven Design (DDD).
+Domain-driven credit approval engine based on future receivables as collateral. This project models the core business logic behind approving credit for companies using future receivables as guarantees, with a strong focus on clarity, correctness and Domain-Driven Design (DDD).
 
 ---
 
 ## Problem
 
-Many small and medium-sized businesses (SMBs / PJs) struggle to access credit
-through traditional financial institutions due to the lack of conventional
-collateral.
-
-A common alternative is to use future receivables (such as credit card,
-boleto or PIX payments) as guarantees. However, approving credit based on
-receivables requires clear business rules, otherwise the lender is exposed
-to mispricing risk and overexposure.
+Many small and medium-sized businesses (SMBs / PJs) struggle to access credit through traditional financial institutions due to the lack of conventional collateral. A common alternative is to use **future receivables** (such as credit card, boleto or PIX payments) as guarantees. However, approving credit based on receivables requires **clear business rules**, otherwise the lender is exposed to mispricing risk and overexposure.
 
 ---
 
 ## Solution
 
-This project implements a simple credit decision engine that evaluates
-whether a company is eligible for a loan based on the total value of its
-future receivables.
-
-The engine focuses exclusively on the domain layer, intentionally excluding
-infrastructure concerns such as databases, APIs or external integrations.
-
-The goal is to model the problem as close as possible to the business language.
+This project implements a simple credit decision engine that evaluates whether a company is eligible for a loan based on the total value of its future receivables. The engine focuses exclusively on the domain layer, intentionally excluding infrastructure concerns such as databases, APIs or external integrations. The goal is to model the problem as close as possible to the business language.
 
 ---
 
 ## Domain Model
-
-The core concepts of the domain are:
 
 - **Company**  
   The legal entity (PJ) requesting credit.
@@ -46,7 +26,7 @@ The core concepts of the domain are:
   - monetary value
   - due date
   - source/type (e.g. credit card, boleto, PIX)
-
+  
 - **ReceivableSource**  
   An enum representing the origin of the receivable, such as:
   - CREDIT_CARD
@@ -63,44 +43,23 @@ The core concepts of the domain are:
   A domain service responsible for deciding whether a credit request should be
   approved based on business rules.
 
-- **CreditRequest**
-  Represents a company's credit request, containing:
-  - the requested loan amount
-  - the associated receivable portfolio
-  - the current credit status
+- **CreditRequest**  
+  Represents a company's credit request with:
+  - requested loan amount
+  - associated receivable portfolio
+  - credit status (PENDING, APPROVED, REJECTED)
 
-  A credit request starts in the PENDING state and transitions to either APPROVED or REJECTED after evaluation.
+- **CreditStatus**  
+  Lifecycle states of a credit request:
+  - PENDING: Awaiting evaluation
+  - APPROVED: Credit was approved
+  - REJECTED: Credit was rejected
 
-- **CreditStatus**
-  Represents the lifecycle of a credit request:
-  - APPROVED
-  - REJECTED
-  - PENDING
+- **CreditApprovalService**  
+  Domain service responsible for evaluating a credit request and updating its status based on business rules. Contains no infrastructure logic.
 
-- **CreditApprovalService**
-
-  A domain service responsible for evaluating a credit request and updating its status based on business rules.
-  This service contains no infrastructure logic, only domain validation and decision-making.  
-
----
-
-**Testing**
-Run tests:
-- bashmvn test
-- Or in your IDE: Right-click src/test/java/ → Run All Tests
-
-Tests cover:
-- CreditApprovalServiceTest: Credit approval logic
-- CreditRequestTest: Credit request creation and state transitions
-
----
-
-**Future Enhancements**
-
-- Add more sophisticated credit scoring rules
-- Implement receivable aging and risk stratification
-- Add interest rate calculations based on portfolio composition
-- Integrate with external data sources
+- **Money - Value Object**  
+  Represents a monetary amount with precision, ensuring values are always positive.
 
 ---
 
@@ -108,18 +67,45 @@ Tests cover:
 
 The current credit approval rules are intentionally simple:
 
-- A credit request is approved only if the sum of receivables is greater
-  than or equal to the requested loan amount.
-- Receivables must have a future due date.
-- Receivables must have a positive value.
-- All receivables in a portfolio belong to one single company.
+- A credit request is **approved** if: receivables ≥ requested amount
+- Receivables must have a **future due date**
+- Receivables must have a **positive value**
+- All receivables belong to **one single company**
 
 These rules are enforced inside the domain, not in external services.
 
 ---
 
-**License:**
+## Testing
+
+Run tests:
+
+```bash
+mvn test
+```
+
+Or in your IDE: Right-click `src/test/java/` → Run All Tests
+
+**Test Coverage:**
+- **CreditApprovalServiceTest**: Credit approval logic
+- **CreditRequestTest**: Credit request creation and state transitions
+
+
+## Future Enhancements
+
+- Add more sophisticated credit scoring rules
+- Implement receivable aging and risk stratification
+- Add interest rate calculations based on portfolio composition
+- Integrate with external data sources (while maintaining domain purity)
+
+---
+
+## License
+
 This is a learning project created for educational purposes.
 
-**Author:**
+---
+
+## Author
+
 Created as a practical exercise in Domain-Driven Design and Java testing.
