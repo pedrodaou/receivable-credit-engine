@@ -108,8 +108,8 @@ These rules are enforced inside the domain, not in external services.
 
 ---
 
-**License**
+**License:**
 This is a learning project created for educational purposes.
 
-**Author**
+**Author:**
 Created as a practical exercise in Domain-Driven Design and Java testing.
