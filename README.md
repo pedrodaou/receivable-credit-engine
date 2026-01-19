@@ -50,6 +50,7 @@ The core concepts of the domain are:
 - **ReceivableSource**  
   An enum representing the origin of the receivable, such as:
   - CREDIT_CARD
+  - DEBIT_CARD
   - BOLETO
   - PIX
   - SUBSCRIPTION
@@ -91,6 +92,15 @@ Run tests:
 Tests cover:
 - CreditApprovalServiceTest: Credit approval logic
 - CreditRequestTest: Credit request creation and state transitions
+
+---
+
+**Future Enhancements**
+
+- Add more sophisticated credit scoring rules
+- Implement receivable aging and risk stratification
+- Add interest rate calculations based on portfolio composition
+- Integrate with external data sources
 
 ---
 
