@@ -2,9 +2,9 @@
 
 Domain-driven credit approval engine based on future receivables as collateral.
 
-This project models the **core business logic** behind approving credit for
-companies using **future receivables** as guarantees, with a strong focus on
-**clarity, correctness and Domain-Driven Design (DDD)**.
+This project models the core business logic behind approving credit for
+companies using future receivables as guarantees, with a strong focus on
+clarity, correctness and Domain-Driven Design (DDD).
 
 ---
 
@@ -14,23 +14,23 @@ Many small and medium-sized businesses (SMBs / PJs) struggle to access credit
 through traditional financial institutions due to the lack of conventional
 collateral.
 
-A common alternative is to use **future receivables** (such as credit card,
+A common alternative is to use future receivables (such as credit card,
 boleto or PIX payments) as guarantees. However, approving credit based on
-receivables requires **clear business rules**, otherwise the lender is exposed
+receivables requires clear business rules, otherwise the lender is exposed
 to mispricing risk and overexposure.
 
 ---
 
 ## Solution
 
-This project implements a **simple credit decision engine** that evaluates
-whether a company is eligible for a loan based on the **total value of its
-future receivables**.
+This project implements a simple credit decision engine that evaluates
+whether a company is eligible for a loan based on the total value of its
+future receivables.
 
-The engine focuses **exclusively on the domain layer**, intentionally excluding
+The engine focuses exclusively on the domain layer, intentionally excluding
 infrastructure concerns such as databases, APIs or external integrations.
 
-The goal is to model the problem **as close as possible to the business language**.
+The goal is to model the problem as close as possible to the business language.
 
 ---
 
@@ -83,14 +83,25 @@ The core concepts of the domain are:
 
 ---
 
+**Testing**
+Run tests:
+- bashmvn test
+- Or in your IDE: Right-click src/test/java/ → Run All Tests
+
+Tests cover:
+- CreditApprovalServiceTest: Credit approval logic
+- CreditRequestTest: Credit request creation and state transitions
+
+---
+
 ## Business Rules
 
 The current credit approval rules are intentionally simple:
 
-- A credit request is **approved only if** the sum of receivables is **greater
-  than or equal to** the requested loan amount.
-- Receivables must have a **future due date**.
-- Receivables must have a **positive value**.
-- All receivables in a portfolio belong to **one single company**.
+- A credit request is approved only if the sum of receivables is greater
+  than or equal to the requested loan amount.
+- Receivables must have a future due date.
+- Receivables must have a positive value.
+- All receivables in a portfolio belong to one single company.
 
-These rules are enforced **inside the domain**, not in external services.
+These rules are enforced inside the domain, not in external services.
