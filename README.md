@@ -105,3 +105,11 @@ The current credit approval rules are intentionally simple:
 - All receivables in a portfolio belong to one single company.
 
 These rules are enforced inside the domain, not in external services.
+
+---
+
+**License**
+This is a learning project created for educational purposes.
+
+**Author**
+Created as a practical exercise in Domain-Driven Design and Java testing.
