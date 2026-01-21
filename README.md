@@ -90,6 +90,12 @@ Or in your IDE: Right-click `src/test/java/` → Run All Tests
 - **CreditApprovalServiceTest**: Credit approval logic
 - **CreditRequestTest**: Credit request creation and state transitions
 
+## TODO / In Progress
+- [x] Implement portfolio risk stratification based on receivable aging
+- [x] Create PortfolioRiskAdjustment value object
+- [x] Create RiskStratificationByAgingCalculator
+- [x] Create PortfolioRiskStratificationService
+- [ ] Integrate CreditApprovalService with PortfolioRiskStratificationService
 
 ## Future Enhancements
 
