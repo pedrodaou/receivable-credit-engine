@@ -8,6 +8,7 @@ import java.time.temporal.ChronoUnit;
 
 public class RiskStratificationByAgingCalculator {
 
+    // main method that will be called in PortfolioRiskStratificationService
     public BigDecimal calculateAdjustedValue (Receivable receivable){
         long daysToMaturity = ChronoUnit.DAYS.between(LocalDate.now(), receivable.getDueDate());
         RiskLevel riskLevel = determineRiskLevel(daysToMaturity);
