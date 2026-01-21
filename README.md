@@ -100,7 +100,6 @@ Or in your IDE: Right-click `src/test/java/` → Run All Tests
 ## Future Enhancements
 
 - Add more sophisticated credit scoring rules
-- Implement receivable aging and risk stratification
 - Add interest rate calculations based on portfolio composition
 - Integrate with external data sources (while maintaining domain purity)
 
