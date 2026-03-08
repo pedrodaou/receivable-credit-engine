@@ -18,4 +18,8 @@ public class PortfolioRiskAdjustment { // value object
     public BigDecimal getAdjustedPortfolioValue() {
         return adjustedPortfolioValue;
     }
+
+    public int compareTo(BigDecimal requestedAmount) {
+        return originalPortfolioValue.compareTo(requestedAmount);
+    }
 }

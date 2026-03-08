@@ -4,6 +4,8 @@ import domain.company.Company;
 import domain.credit.CreditApprovalService;
 import domain.credit.CreditRequest;
 import domain.credit.CreditStatus;
+import domain.credit.scoring.PortfolioRiskStratificationService;
+import domain.credit.scoring.RiskStratificationByAgingCalculator;
 import domain.receivable.Receivable;
 import domain.receivable.ReceivablePortfolio;
 import domain.receivable.ReceivableType;
@@ -23,7 +25,10 @@ public class CreditApprovalServiceTest {
 
     @BeforeEach
     public void setUp() {
-        service = new CreditApprovalService();
+        RiskStratificationByAgingCalculator calculator = new RiskStratificationByAgingCalculator();
+        PortfolioRiskStratificationService riskService = new PortfolioRiskStratificationService(calculator);
+        service = new CreditApprovalService(riskService);
+
         Company testCompany = new Company("1", "TestCompany", "12345678000100");
 
         Receivable receivable = new Receivable(
@@ -45,14 +50,14 @@ public class CreditApprovalServiceTest {
 
     @Test
     public void testApprovedWhenPortfolioEquals(){
-        CreditRequest request2 = new CreditRequest(portfolio, new BigDecimal("1000"));
+        CreditRequest request2 = new CreditRequest(portfolio, new BigDecimal("980"));
         service.evaluateCreditApproval(request2);
         assertEquals(CreditStatus.APPROVED, request2.getCreditStatus());
     }
 
     @Test
     public void testApprovedWhenPortfolioLess(){
-        CreditRequest request3 = new CreditRequest(portfolio, new BigDecimal("2000"));
+        CreditRequest request3 = new CreditRequest(portfolio, new BigDecimal("981"));
         service.evaluateCreditApproval(request3);
         assertEquals(CreditStatus.REJECTED, request3.getCreditStatus());
     }
