@@ -95,7 +95,8 @@ Or in your IDE: Right-click `src/test/java/` → Run All Tests
 - [x] Create PortfolioRiskAdjustment value object
 - [x] Create RiskStratificationByAgingCalculator
 - [x] Create PortfolioRiskStratificationService
-- [ ] Integrate CreditApprovalService with PortfolioRiskStratificationService
+- [X] Integrate CreditApprovalService with PortfolioRiskStratificationService
+- [ ] Spring Boot REST API integration
 
 ## Future Enhancements
 
