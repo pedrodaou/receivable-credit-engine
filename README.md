@@ -95,7 +95,10 @@ Or in your IDE: Right-click `src/test/java/` → Run All Tests
 - [x] Create PortfolioRiskAdjustment value object
 - [x] Create RiskStratificationByAgingCalculator
 - [x] Create PortfolioRiskStratificationService
-- [ ] Integrate CreditApprovalService with PortfolioRiskStratificationService
+- [X] Integrate CreditApprovalService with PortfolioRiskStratificationService
+- [ ] Add receivable type risk weight to scoring (BOLETO, PIX, CONTRACT, etc.)
+- [ ] Integrate receivable type risk into RiskStratificationByAgingCalculator (combine aging + type weights)
+- [ ] Spring Boot REST API integration
 
 ## Future Enhancements
 
