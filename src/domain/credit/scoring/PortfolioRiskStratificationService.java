@@ -6,10 +6,10 @@ import domain.receivable.ReceivablePortfolio;
 import java.math.BigDecimal;
 
 public class PortfolioRiskStratificationService { // service
-    private final RiskStratificationByAgingCalculator calculator;
+    private final RiskStratificationCalculator calculator;
 
     // injects calculator dependency in this service to use it to adjust the portfolio value
-    public PortfolioRiskStratificationService(RiskStratificationByAgingCalculator calculator) {
+    public PortfolioRiskStratificationService(RiskStratificationCalculator calculator) {
         this.calculator = calculator;
     }
 
